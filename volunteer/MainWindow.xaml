@@ -1,8 +1,6 @@
-﻿<Window x:Class="volunteer.MainWindow"
+﻿<NavigationWindow x:Class="volunteer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        Title="Volunteer" Height="768" Width="1024" Source="VolunteerHome.xaml">
+    
+</NavigationWindow>

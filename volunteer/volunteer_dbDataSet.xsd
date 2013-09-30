@@ -13,16 +13,7 @@
   </xs:annotation>
   <xs:element name="volunteer_dbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="volunteer_dbDataSet" msprop:Generator_UserDSName="volunteer_dbDataSet">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Tasks" msprop:Generator_TableClassName="TasksDataTable" msprop:Generator_TableVarName="tableTasks" msprop:Generator_TablePropName="Tasks" msprop:Generator_RowDeletingName="TasksRowDeleting" msprop:Generator_RowChangingName="TasksRowChanging" msprop:Generator_RowEvHandlerName="TasksRowChangeEventHandler" msprop:Generator_RowDeletedName="TasksRowDeleted" msprop:Generator_UserTableName="Tasks" msprop:Generator_RowChangedName="TasksRowChanged" msprop:Generator_RowEvArgName="TasksRowChangeEvent" msprop:Generator_RowClassName="TasksRow">
-          <xs:complexType>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Talents" msprop:Generator_TableClassName="TalentsDataTable" msprop:Generator_TableVarName="tableTalents" msprop:Generator_TablePropName="Talents" msprop:Generator_RowDeletingName="TalentsRowDeleting" msprop:Generator_RowChangingName="TalentsRowChanging" msprop:Generator_RowEvHandlerName="TalentsRowChangeEventHandler" msprop:Generator_RowDeletedName="TalentsRowDeleted" msprop:Generator_UserTableName="Talents" msprop:Generator_RowChangedName="TalentsRowChanged" msprop:Generator_RowEvArgName="TalentsRowChangeEvent" msprop:Generator_RowClassName="TalentsRow">
-          <xs:complexType>
-          </xs:complexType>
-        </xs:element>
-      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded" />
     </xs:complexType>
   </xs:element>
 </xs:schema>
