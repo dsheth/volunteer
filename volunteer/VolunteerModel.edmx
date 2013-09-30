@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="volunteer_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Families">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HoursRequired" Type="int" Nullable="false" />
+          <Property Name="MaritalStatus" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FamilyTalent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FamilyId" Type="int" Nullable="false" />
+          <Property Name="TalentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DefaultFamilyId" Type="int" />
+        </EntityType>
+        <EntityType Name="Talents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskTalent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+          <Property Name="TalentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Works">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+          <Property Name="MinutesWorked" Type="int" Nullable="false" />
+          <Property Name="DateOfWork" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FamilyTalent_To_Families">
+          <End Role="Families" Type="Self.Families" Multiplicity="1" />
+          <End Role="FamilyTalent" Type="Self.FamilyTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Families">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyTalent">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyTalent_To_Talents">
+          <End Role="Talents" Type="Self.Talents" Multiplicity="1" />
+          <End Role="FamilyTalent" Type="Self.FamilyTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyTalent">
+              <PropertyRef Name="TalentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_To_Families">
+          <End Role="Families" Type="Self.Families" Multiplicity="0..1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Families">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="DefaultFamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTalent_To_Tasks">
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+          <End Role="TaskTalent" Type="Self.TaskTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskTalent">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTalent_ToTalents">
+          <End Role="Talents" Type="Self.Talents" Multiplicity="1" />
+          <End Role="TaskTalent" Type="Self.TaskTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskTalent">
+              <PropertyRef Name="TalentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Works_To_Persons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="Works" Type="Self.Works" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Works">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Works_To_Tasks">
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+          <End Role="Works" Type="Self.Works" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Works">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="volunteer_dbModelStoreContainer">
+          <EntitySet Name="Families" EntityType="Self.Families" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="FamilyTalent" EntityType="Self.FamilyTalent" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Talents" EntityType="Self.Talents" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="TaskTalent" EntityType="Self.TaskTalent" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Works" EntityType="Self.Works" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_FamilyTalent_To_Families" Association="Self.FK_FamilyTalent_To_Families">
+            <End Role="Families" EntitySet="Families" />
+            <End Role="FamilyTalent" EntitySet="FamilyTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyTalent_To_Talents" Association="Self.FK_FamilyTalent_To_Talents">
+            <End Role="Talents" EntitySet="Talents" />
+            <End Role="FamilyTalent" EntitySet="FamilyTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_To_Families" Association="Self.FK_Persons_To_Families">
+            <End Role="Families" EntitySet="Families" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTalent_To_Tasks" Association="Self.FK_TaskTalent_To_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="TaskTalent" EntitySet="TaskTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTalent_ToTalents" Association="Self.FK_TaskTalent_ToTalents">
+            <End Role="Talents" EntitySet="Talents" />
+            <End Role="TaskTalent" EntitySet="TaskTalent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Works_To_Persons" Association="Self.FK_Works_To_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Works" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Works_To_Tasks" Association="Self.FK_Works_To_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Works" EntitySet="Works" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="volunteer_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoursRequired" Type="Int32" Nullable="false" />
+          <Property Name="MaritalStatus" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamilyTalents" Relationship="Self.FK_FamilyTalent_To_Families" FromRole="Families" ToRole="FamilyTalent" />
+          <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_To_Families" FromRole="Families" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="FamilyTalent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FamilyId" Type="Int32" Nullable="false" />
+          <Property Name="TalentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Family" Relationship="Self.FK_FamilyTalent_To_Families" FromRole="FamilyTalent" ToRole="Families" />
+          <NavigationProperty Name="Talent" Relationship="Self.FK_FamilyTalent_To_Talents" FromRole="FamilyTalent" ToRole="Talents" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DefaultFamilyId" Type="Int32" />
+          <NavigationProperty Name="Family" Relationship="Self.FK_Persons_To_Families" FromRole="Persons" ToRole="Families" />
+          <NavigationProperty Name="Works" Relationship="Self.FK_Works_To_Persons" FromRole="Persons" ToRole="Works" />
+        </EntityType>
+        <EntityType Name="Talent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamilyTalents" Relationship="Self.FK_FamilyTalent_To_Talents" FromRole="Talents" ToRole="FamilyTalent" />
+          <NavigationProperty Name="TaskTalents" Relationship="Self.FK_TaskTalent_ToTalents" FromRole="Talents" ToRole="TaskTalent" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TaskTalents" Relationship="Self.FK_TaskTalent_To_Tasks" FromRole="Tasks" ToRole="TaskTalent" />
+          <NavigationProperty Name="Works" Relationship="Self.FK_Works_To_Tasks" FromRole="Tasks" ToRole="Works" />
+        </EntityType>
+        <EntityType Name="TaskTalent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <Property Name="TalentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Talent" Relationship="Self.FK_TaskTalent_ToTalents" FromRole="TaskTalent" ToRole="Talents" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_TaskTalent_To_Tasks" FromRole="TaskTalent" ToRole="Tasks" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <Property Name="MinutesWorked" Type="Int32" Nullable="false" />
+          <Property Name="DateOfWork" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Works_To_Persons" FromRole="Works" ToRole="Persons" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Works_To_Tasks" FromRole="Works" ToRole="Tasks" />
+        </EntityType>
+        <Association Name="FK_FamilyTalent_To_Families">
+          <End Role="Families" Type="Self.Family" Multiplicity="1" />
+          <End Role="FamilyTalent" Type="Self.FamilyTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Families">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyTalent">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_To_Families">
+          <End Role="Families" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Families">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="DefaultFamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyTalent_To_Talents">
+          <End Role="Talents" Type="Self.Talent" Multiplicity="1" />
+          <End Role="FamilyTalent" Type="Self.FamilyTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyTalent">
+              <PropertyRef Name="TalentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Works_To_Persons">
+          <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+          <End Role="Works" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Works">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTalent_ToTalents">
+          <End Role="Talents" Type="Self.Talent" Multiplicity="1" />
+          <End Role="TaskTalent" Type="Self.TaskTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskTalent">
+              <PropertyRef Name="TalentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTalent_To_Tasks">
+          <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskTalent" Type="Self.TaskTalent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskTalent">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Works_To_Tasks">
+          <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+          <End Role="Works" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Works">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="volunteer_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Families" EntityType="Self.Family" />
+          <EntitySet Name="FamilyTalents" EntityType="Self.FamilyTalent" />
+          <EntitySet Name="Persons" EntityType="Self.Person" />
+          <EntitySet Name="Talents" EntityType="Self.Talent" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="TaskTalents" EntityType="Self.TaskTalent" />
+          <EntitySet Name="Works" EntityType="Self.Work" />
+          <AssociationSet Name="FK_FamilyTalent_To_Families" Association="Self.FK_FamilyTalent_To_Families">
+            <End Role="Families" EntitySet="Families" />
+            <End Role="FamilyTalent" EntitySet="FamilyTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_To_Families" Association="Self.FK_Persons_To_Families">
+            <End Role="Families" EntitySet="Families" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyTalent_To_Talents" Association="Self.FK_FamilyTalent_To_Talents">
+            <End Role="Talents" EntitySet="Talents" />
+            <End Role="FamilyTalent" EntitySet="FamilyTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Works_To_Persons" Association="Self.FK_Works_To_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Works" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTalent_ToTalents" Association="Self.FK_TaskTalent_ToTalents">
+            <End Role="Talents" EntitySet="Talents" />
+            <End Role="TaskTalent" EntitySet="TaskTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTalent_To_Tasks" Association="Self.FK_TaskTalent_To_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="TaskTalent" EntitySet="TaskTalents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Works_To_Tasks" Association="Self.FK_Works_To_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Works" EntitySet="Works" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="volunteer_dbModelStoreContainer" CdmEntityContainer="volunteer_dbEntities">
+          <EntitySetMapping Name="Families">
+            <EntityTypeMapping TypeName="volunteer_dbModel.Family">
+              <MappingFragment StoreEntitySet="Families">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HoursRequired" ColumnName="HoursRequired" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyTalents">
+            <EntityTypeMapping TypeName="volunteer_dbModel.FamilyTalent">
+              <MappingFragment StoreEntitySet="FamilyTalent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+                <ScalarProperty Name="TalentId" ColumnName="TalentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="volunteer_dbModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DefaultFamilyId" ColumnName="DefaultFamilyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Talents">
+            <EntityTypeMapping TypeName="volunteer_dbModel.Talent">
+              <MappingFragment StoreEntitySet="Talents">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="volunteer_dbModel.Task">
+              <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskTalents">
+            <EntityTypeMapping TypeName="volunteer_dbModel.TaskTalent">
+              <MappingFragment StoreEntitySet="TaskTalent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="TalentId" ColumnName="TalentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="volunteer_dbModel.Work">
+              <MappingFragment StoreEntitySet="Works">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="MinutesWorked" ColumnName="MinutesWorked" />
+                <ScalarProperty Name="DateOfWork" ColumnName="DateOfWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

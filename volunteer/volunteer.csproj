@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,8 +62,44 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="VolunteerHome.xaml.cs">
+    <Compile Include="Family.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyTalent.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FamiliesPage.xaml.cs">
+      <DependentUpon>FamiliesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\VolunteerHome.xaml.cs">
       <DependentUpon>VolunteerHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Talent.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskTalent.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VolunteerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VolunteerModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="volunteer_dbDataSet.cs">
       <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
@@ -65,7 +110,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Work.cs">
+      <DependentUpon>VolunteerModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="Pages\FamiliesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -73,11 +125,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Pages\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="VolunteerHome.xaml">
+    <Page Include="Pages\VolunteerHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,11 +152,29 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <EntityDeploy Include="VolunteerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VolunteerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="VolunteerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VolunteerModel.edmx</DependentUpon>
+      <LastGenOutput>VolunteerModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="VolunteerModel.edmx.diagram">
+      <DependentUpon>VolunteerModel.edmx</DependentUpon>
+    </None>
+    <None Include="VolunteerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VolunteerModel.edmx</DependentUpon>
+      <LastGenOutput>VolunteerModel.cs</LastGenOutput>
+    </None>
     <None Include="volunteer_dbDataSet.xsc">
       <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
     </None>
@@ -119,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

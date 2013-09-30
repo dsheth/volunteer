@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ddcc5d7e9b204cceaca1587b8cdbb32c" Name="Diagram1">
+        <EntityTypeShape EntityType="volunteer_dbModel.Family" Width="1.5" PointX="5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_dbModel.FamilyTalent" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_dbModel.Person" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_dbModel.Talent" Width="1.5" PointX="5.125" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_dbModel.Task" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_dbModel.TaskTalent" Width="1.5" PointX="3.375" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="volunteer_dbModel.Work" Width="1.5" PointX="0.5" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="volunteer_dbModel.FK_FamilyTalent_To_Families" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_dbModel.FK_Persons_To_Families" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_dbModel.FK_FamilyTalent_To_Talents" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_dbModel.FK_Works_To_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_dbModel.FK_TaskTalent_ToTalents" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_dbModel.FK_TaskTalent_To_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="volunteer_dbModel.FK_Works_To_Tasks" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
