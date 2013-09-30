@@ -13,10 +13,10 @@ namespace volunteer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class volunteer_dbEntities : DbContext
+    public partial class volunteer_dbEntities1 : DbContext
     {
-        public volunteer_dbEntities()
-            : base("name=volunteer_dbEntities")
+        public volunteer_dbEntities1()
+            : base("name=volunteer_dbEntities1")
         {
         }
     

@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="HoursRequired" Type="int" Nullable="false" />
           <Property Name="MaritalStatus" Type="int" Nullable="false" />
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DefaultFamilyId" Type="int" />
@@ -36,14 +36,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Tasks">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskTalent">
@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PersonId" Type="int" Nullable="false" />
           <Property Name="TaskId" Type="int" Nullable="false" />
           <Property Name="MinutesWorked" Type="int" Nullable="false" />
@@ -194,7 +194,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HoursRequired" Type="Int32" Nullable="false" />
           <Property Name="MaritalStatus" Type="Int32" Nullable="false" />
@@ -216,7 +216,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DefaultFamilyId" Type="Int32" />
@@ -227,7 +227,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FamilyTalents" Relationship="Self.FK_FamilyTalent_To_Talents" FromRole="Talents" ToRole="FamilyTalent" />
           <NavigationProperty Name="TaskTalents" Relationship="Self.FK_TaskTalent_ToTalents" FromRole="Talents" ToRole="TaskTalent" />
@@ -236,7 +236,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TaskTalents" Relationship="Self.FK_TaskTalent_To_Tasks" FromRole="Tasks" ToRole="TaskTalent" />
           <NavigationProperty Name="Works" Relationship="Self.FK_Works_To_Tasks" FromRole="Tasks" ToRole="Works" />
@@ -255,7 +255,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PersonId" Type="Int32" Nullable="false" />
           <Property Name="TaskId" Type="Int32" Nullable="false" />
           <Property Name="MinutesWorked" Type="Int32" Nullable="false" />
@@ -347,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="volunteer_dbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="volunteer_dbEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Families" EntityType="Self.Family" />
           <EntitySet Name="FamilyTalents" EntityType="Self.FamilyTalent" />
           <EntitySet Name="Persons" EntityType="Self.Person" />
@@ -389,7 +389,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="volunteer_dbModelStoreContainer" CdmEntityContainer="volunteer_dbEntities">
+        <EntityContainerMapping StorageEntityContainer="volunteer_dbModelStoreContainer" CdmEntityContainer="volunteer_dbEntities1">
           <EntitySetMapping Name="Families">
             <EntityTypeMapping TypeName="volunteer_dbModel.Family">
               <MappingFragment StoreEntitySet="Families">
