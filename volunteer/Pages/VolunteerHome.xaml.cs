@@ -28,8 +28,31 @@ namespace volunteer
 
         private void Work_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void Families_Click(object sender, RoutedEventArgs e)
+        {
             FamiliesPage fp = new FamiliesPage();
+            var family = new Family();
+            family.MaritalStatus = "Married";
+            family.Name = "test family name";
+            family.HoursRequired = 3;
+            var db = new volunteer_dbEntities();
+            db.Families.Add(family);
+            db.SaveChanges();
             this.NavigationService.Navigate(fp);
+        }
+        private void Tasks_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Talents_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void People_Click(object sender, RoutedEventArgs e)
+        { 
         }
     }
 }

@@ -10,7 +10,7 @@
 namespace volunteer
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
     public partial class Family
     {
@@ -23,10 +23,10 @@ namespace volunteer
         public int Id { get; set; }
         public string Name { get; set; }
         public int HoursRequired { get; set; }
-        public int MaritalStatus { get; set; }
+        public string MaritalStatus { get; set; }
         public string Note { get; set; }
     
-        public virtual ICollection<FamilyTalent> FamilyTalents { get; set; }
-        public virtual ICollection<Person> Persons { get; set; }
+        public virtual ObservableColletion<FamilyTalent> FamilyTalents { get; set; }
+        public virtual ObservableColletion<Person> Persons { get; set; }
     }
 }

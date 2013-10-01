@@ -10,7 +10,7 @@
 namespace volunteer
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
     public partial class Task
     {
@@ -23,7 +23,7 @@ namespace volunteer
         public int Id { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<TaskTalent> TaskTalents { get; set; }
-        public virtual ICollection<Work> Works { get; set; }
+        public virtual ObservableColletion<TaskTalent> TaskTalents { get; set; }
+        public virtual ObservableColletion<Work> Works { get; set; }
     }
 }

@@ -101,15 +101,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VolunteerModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="volunteer_dbDataSet.cs">
-      <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="volunteer_dbDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Work.cs">
       <DependentUpon>VolunteerModel.tt</DependentUpon>
     </Compile>
@@ -153,6 +144,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Family.datasource" />
+    <None Include="Properties\DataSources\Person.datasource" />
+    <None Include="Properties\DataSources\Talent.datasource" />
+    <None Include="Properties\DataSources\Task.datasource" />
+    <None Include="Properties\DataSources\Work.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -174,17 +170,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>VolunteerModel.edmx</DependentUpon>
       <LastGenOutput>VolunteerModel.cs</LastGenOutput>
-    </None>
-    <None Include="volunteer_dbDataSet.xsc">
-      <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="volunteer_dbDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>volunteer_dbDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="volunteer_dbDataSet.xss">
-      <DependentUpon>volunteer_dbDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

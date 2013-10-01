@@ -10,7 +10,7 @@
 namespace volunteer
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
     public partial class Person
     {
@@ -25,6 +25,6 @@ namespace volunteer
         public Nullable<int> DefaultFamilyId { get; set; }
     
         public virtual Family Family { get; set; }
-        public virtual ICollection<Work> Works { get; set; }
+        public virtual ObservableColletion<Work> Works { get; set; }
     }
 }

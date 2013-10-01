@@ -3,9 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900"
-	Title="Volunteer - Home">
+      mc:Ignorable="d"
+	Title="Volunteer - Home" Width="900" Height="700">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,9 +18,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Button Grid.Column="0" Grid.Row="0" Width="300" Height="50" Margin="10,10,10,10" FontSize="20" Click="Work_Click">Work</Button>
-        <Button Grid.Column="0" Grid.Row="1" Width="300" Height="50" Margin="10,10,10,10" FontSize="20">Families</Button>
-        <Button Grid.Column="0" Grid.Row="2" Width="300" Height="50" Margin="10,10,10,10" FontSize="20">Tasks</Button>
-        <Button Grid.Column="0" Grid.Row="3" Width="300" Height="50" Margin="10,10,10,10" FontSize="20">Talents</Button>
-        <Button Grid.Column="0" Grid.Row="4" Width="300" Height="50" Margin="10,10,10,10" FontSize="20">People</Button>
+        <Button Grid.Column="0" Grid.Row="1" Width="300" Height="50" Margin="10,10,10,10" FontSize="20" Click="Families_Click">Families</Button>
+        <Button Grid.Column="0" Grid.Row="2" Width="300" Height="50" Margin="10,10,10,10" FontSize="20" Click="Tasks_Click">Tasks</Button>
+        <Button Grid.Column="0" Grid.Row="3" Width="300" Height="50" Margin="10,10,10,10" FontSize="20" Click="Talents_Click">Talents</Button>
+        <Button Grid.Column="0" Grid.Row="4" Width="300" Height="50" Margin="10,10,10,10" FontSize="20" Click="People_Click">People</Button>
     </Grid>
 </Page>
