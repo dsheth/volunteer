@@ -16,7 +16,7 @@ namespace volunteer
     {
         public Person()
         {
-            this.Works = new HashSet<Work>();
+            this.Works = new ObservableCollection<Work>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace volunteer
         public Nullable<int> DefaultFamilyId { get; set; }
     
         public virtual Family Family { get; set; }
-        public virtual ObservableColletion<Work> Works { get; set; }
+        public virtual ObservableCollection<Work> Works { get; set; }
     }
 }

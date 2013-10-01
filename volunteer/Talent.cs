@@ -16,14 +16,14 @@ namespace volunteer
     {
         public Talent()
         {
-            this.FamilyTalents = new HashSet<FamilyTalent>();
-            this.TaskTalents = new HashSet<TaskTalent>();
+            this.FamilyTalents = new ObservableCollection<FamilyTalent>();
+            this.TaskTalents = new ObservableCollection<TaskTalent>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
-        public virtual ObservableColletion<FamilyTalent> FamilyTalents { get; set; }
-        public virtual ObservableColletion<TaskTalent> TaskTalents { get; set; }
+        public virtual ObservableCollection<FamilyTalent> FamilyTalents { get; set; }
+        public virtual ObservableCollection<TaskTalent> TaskTalents { get; set; }
     }
 }

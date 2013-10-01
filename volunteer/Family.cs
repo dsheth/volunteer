@@ -16,8 +16,8 @@ namespace volunteer
     {
         public Family()
         {
-            this.FamilyTalents = new HashSet<FamilyTalent>();
-            this.Persons = new HashSet<Person>();
+            this.FamilyTalents = new ObservableCollection<FamilyTalent>();
+            this.Persons = new ObservableCollection<Person>();
         }
     
         public int Id { get; set; }
@@ -26,7 +26,7 @@ namespace volunteer
         public string MaritalStatus { get; set; }
         public string Note { get; set; }
     
-        public virtual ObservableColletion<FamilyTalent> FamilyTalents { get; set; }
-        public virtual ObservableColletion<Person> Persons { get; set; }
+        public virtual ObservableCollection<FamilyTalent> FamilyTalents { get; set; }
+        public virtual ObservableCollection<Person> Persons { get; set; }
     }
 }
