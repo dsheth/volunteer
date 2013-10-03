@@ -25,9 +25,28 @@ namespace volunteer.Pages
         public FamiliesPage()
         {
             InitializeComponent();
-            System.Windows.Data.CollectionViewSource familyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("familyViewSource")));
-            _context.Families.Load();
-            familyViewSource.Source = _context.Families.Local;
+            var db = new volunteer_dbEntities();
+            var familiesQuery = from family in db.Families
+                                select new
+                                    {
+                                        FamilyName = family.Name,
+                                        FamilyMaritalStatus = family.MaritalStatus,
+                                        FamilyHoursRequired = family.HoursRequired
+                                    };
+            var familiesList = familiesQuery.ToList();
+            familiesGrid.ItemsSource = familiesList;
+            
+        }
+        protected void OnMouseDoubleClick(object sender, EventArgs args)
+        {
+
+            var row = sender as DataGridRow;
+            if (row != null && row.IsSelected)
+            {
+                Console.WriteLine("double click");
+                
+            }
         }
     }
+
 }

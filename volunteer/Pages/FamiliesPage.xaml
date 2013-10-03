@@ -7,18 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900"
 	Title="Families">
-    <Page.Resources>
-        <CollectionViewSource x:Key="familyViewSource" d:DesignSource="{d:DesignInstance {x:Type volunteer:Family}, CreateList=True}"/>
-    </Page.Resources>
-    <Grid DataContext="{StaticResource familyViewSource}">
-        <DataGrid x:Name="familyDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="203,119,297,381" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="hoursRequiredColumn" Binding="{Binding HoursRequired}" Header="Hours Required" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="maritalStatusColumn" Binding="{Binding MaritalStatus}" Header="Marital Status" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="noteColumn" Binding="{Binding Note}" Header="Note" Width="SizeToHeader"/>
-            </DataGrid.Columns>
+
+    <Grid>
+
+        <DataGrid  Name="familiesGrid" IsReadOnly="True" >
+            <DataGrid.RowStyle>
+            <Style TargetType="DataGridRow">
+                <EventSetter Event="MouseDoubleClick" Handler="OnMouseDoubleClick" />
+            </Style>
+            </DataGrid.RowStyle>
         </DataGrid>
 
     </Grid>
