@@ -20,15 +20,29 @@ namespace volunteer
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static volunteer_dbEntities db = new volunteer_dbEntities();
         public MainWindow()
         {
             InitializeComponent();
         }
         void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
- 
+           
         }
-      
-     
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            db.SaveChanges();
+        }
+        public static volunteer_dbEntities dbInstance() { return db; }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            db = new volunteer_dbEntities();
+            Tabs.Visibility = Visibility.Hidden;
+            Tabs.Visibility = Visibility.Visible;
+          
+        }
     }
+    
 }
