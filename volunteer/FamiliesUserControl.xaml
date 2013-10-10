@@ -7,12 +7,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Name="FamiliesTab" IsVisibleChanged="FamiliesTab_IsVisibleChanged">
         <StackPanel Name="FamiliesStackPanel">
-            <DataGrid  Name="FamiliesGrid" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" Height="400" SelectionMode="Single" AutoGenerateColumns="False" >
+            <DataGrid  Name="FamiliesGrid" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" Height="400" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=Family.Name}" Header="Family Name"/>
                     <DataGridTextColumn Binding="{Binding Path=Family.HoursRequired}" Header="Hours Required"/>
                     <DataGridTextColumn Binding="{Binding Path=Family.MaritalStatus}" Header="Marital Status"/>
                     <DataGridTextColumn Binding="{Binding Path=HoursCompleted}" IsReadOnly="True" Header="Hours Completed"/>
+                    <DataGridTextColumn Binding="{Binding Path=Family.Note}" Header="Note"/>
                 </DataGrid.Columns>
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
@@ -35,6 +36,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row ="0" Grid.Column="0">Name</Label>
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.Name}" ></TextBox>
@@ -43,8 +45,10 @@
                 <Label Grid.Row="0" Grid.Column="4">Marital Status</Label>
                 <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.MaritalStatus}"></TextBox>
                 <Label Grid.Row="0" Grid.Column="6">Hours Completed</Label>
-                <TextBox Grid.Row="0" Grid.Column="7" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.HoursCompleted}"></TextBox>
-                <Label Grid.Row="1" Grid.ColumnSpan="8">Talents go here</Label>
+                <TextBox Grid.Row="0" Grid.Column="7" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.HoursCompleted}" IsReadOnly="True" ></TextBox>
+                <Label Grid.Row="1" Grid.ColumnSpan="8">Talent 1, Talent 2, Talent 3, etc.</Label>
+                <Label Grid.Row="2" Grid.Column="0">Note</Label>
+                <TextBox Grid.Row="3" Grid.ColumnSpan="8" Height="200" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.Note}"></TextBox>
             </Grid>   
         </StackPanel>
     </Grid>

@@ -23,6 +23,7 @@ namespace volunteer
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<int> DefaultFamilyId { get; set; }
+        public string Email { get; set; }
     
         public virtual Family Family { get; set; }
         public virtual ObservableCollection<Work> Works { get; set; }

@@ -9,7 +9,9 @@
             <local:FamiliesUserControl/>
         </TabItem>
         <TabItem x:Name="Work" Header="Work">work stuff</TabItem>
-        <TabItem x:Name="Tasks" Header="Tasks">Tasks</TabItem>
+            <TabItem x:Name="Tasks" Header="Tasks">
+                <local:TasksUserControl/>
+            </TabItem>
         <TabItem x:Name="Talents" Header="Talents">Talents</TabItem>
         <TabItem x:Name="People" Header="People">People</TabItem>
     </TabControl>
