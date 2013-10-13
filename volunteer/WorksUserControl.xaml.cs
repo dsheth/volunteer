@@ -17,11 +17,11 @@ using System.Data.Entity;
 namespace volunteer
 {
     /// <summary>
-    /// Interaction logic for PeopleUserControl.xaml
+    /// Interaction logic for WorksUserControl.xaml
     /// </summary>
-    public partial class PeopleUserControl : UserControl
+    public partial class WorksUserControl : UserControl
     {
-        public PeopleUserControl()
+        public WorksUserControl()
         {
             InitializeComponent();
         }
@@ -29,18 +29,15 @@ namespace volunteer
         private void RefreshFromDb()
         {
             var db = MainWindow.dbInstance();
-   
-            var peopleList = db.Persons.Include(p => p.Family).ToList();
-            PeopleGrid.DataContext = peopleList;
-   
-            var families = from f in db.Families select f;
-            families = families.OrderBy(f => f.Name);
-            FamiliesComboBox.ItemsSource = families.ToList();
-           
+
+            var worksList = db.Works.Include(w => w.Person).
+                Include(w => w.Task).Include(w => w.Family).
+                ToList();
+            
+            WorksStackPanel.DataContext = worksList;
         }
 
-    
-        private void PeopleTab_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void WorksTab_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue == true) { RefreshFromDb(); }
         }

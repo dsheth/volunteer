@@ -19,8 +19,10 @@ namespace volunteer
         public int TaskId { get; set; }
         public int MinutesWorked { get; set; }
         public System.DateTime DateOfWork { get; set; }
+        public int FamilyId { get; set; }
     
         public virtual Person Person { get; set; }
         public virtual Task Task { get; set; }
+        public virtual Family Family { get; set; }
     }
 }

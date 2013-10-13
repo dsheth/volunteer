@@ -18,6 +18,7 @@ namespace volunteer
         {
             this.FamilyTalents = new ObservableCollection<FamilyTalent>();
             this.Persons = new ObservableCollection<Person>();
+            this.Works = new ObservableCollection<Work>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,6 @@ namespace volunteer
     
         public virtual ObservableCollection<FamilyTalent> FamilyTalents { get; set; }
         public virtual ObservableCollection<Person> Persons { get; set; }
+        public virtual ObservableCollection<Work> Works { get; set; }
     }
 }

@@ -64,6 +64,7 @@
           <Property Name="TaskId" Type="int" Nullable="false" />
           <Property Name="MinutesWorked" Type="int" Nullable="false" />
           <Property Name="DateOfWork" Type="date" Nullable="false" />
+          <Property Name="FamilyId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_FamilyTalent_To_Families">
           <End Role="Families" Type="Self.Families" Multiplicity="1" />
@@ -125,6 +126,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Works_To_Familes">
+          <End Role="Families" Type="Self.Families" Multiplicity="1" />
+          <End Role="Works" Type="Self.Works" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Families">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Works">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Works_To_Persons">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
           <End Role="Works" Type="Self.Works" Multiplicity="*" />
@@ -177,6 +190,10 @@
             <End Role="Talents" EntitySet="Talents" />
             <End Role="TaskTalent" EntitySet="TaskTalent" />
           </AssociationSet>
+          <AssociationSet Name="FK_Works_To_Familes" Association="Self.FK_Works_To_Familes">
+            <End Role="Families" EntitySet="Families" />
+            <End Role="Works" EntitySet="Works" />
+          </AssociationSet>
           <AssociationSet Name="FK_Works_To_Persons" Association="Self.FK_Works_To_Persons">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Works" EntitySet="Works" />
@@ -201,6 +218,7 @@
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FamilyTalents" Relationship="Self.FK_FamilyTalent_To_Families" FromRole="Families" ToRole="FamilyTalent" />
           <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_To_Families" FromRole="Families" ToRole="Persons" />
+          <NavigationProperty Name="Works" Relationship="volunteer_dbModel.FK_Works_To_Familes" FromRole="Family" ToRole="Work" />
         </EntityType>
         <EntityType Name="FamilyTalent">
           <Key>
@@ -263,6 +281,8 @@
           <Property Name="DateOfWork" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Works_To_Persons" FromRole="Works" ToRole="Persons" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Works_To_Tasks" FromRole="Works" ToRole="Tasks" />
+          <Property Name="FamilyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Family" Relationship="volunteer_dbModel.FK_Works_To_Familes" FromRole="Work" ToRole="Family" />
         </EntityType>
         <Association Name="FK_FamilyTalent_To_Families">
           <End Role="Families" Type="Self.Family" Multiplicity="1" />
@@ -384,7 +404,23 @@
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="Works" EntitySet="Works" />
           </AssociationSet>
+          <AssociationSet Name="FK_Works_To_Familes" Association="volunteer_dbModel.FK_Works_To_Familes">
+            <End Role="Family" EntitySet="Families" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Works_To_Familes">
+          <End Type="volunteer_dbModel.Family" Role="Family" Multiplicity="1" />
+          <End Type="volunteer_dbModel.Work" Role="Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -450,6 +486,7 @@
           <EntitySetMapping Name="Works">
             <EntityTypeMapping TypeName="volunteer_dbModel.Work">
               <MappingFragment StoreEntitySet="Works">
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="TaskId" ColumnName="TaskId" />

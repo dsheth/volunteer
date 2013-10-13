@@ -115,6 +115,9 @@
     <Compile Include="Work.cs">
       <DependentUpon>VolunteerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WorksUserControl.xaml.cs">
+      <DependentUpon>WorksUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="FamiliesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TasksUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorksUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
