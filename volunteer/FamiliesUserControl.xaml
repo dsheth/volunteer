@@ -13,7 +13,7 @@
                     <DataGridTextColumn Binding="{Binding Path=Family.HoursRequired}" Header="Hours Required"/>
                     <DataGridTextColumn Binding="{Binding Path=Family.MaritalStatus}" Header="Marital Status"/>
                     <DataGridTextColumn Binding="{Binding Path=HoursCompleted}" IsReadOnly="True" Header="Hours Completed"/>
-                    <DataGridTextColumn Binding="{Binding Path=Family.Note}" Header="Note"/>
+                    <DataGridTextColumn Binding="{Binding Path=Family.Note}" Header="Note" />
                 </DataGrid.Columns>
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
@@ -48,7 +48,7 @@
                 <TextBox Grid.Row="0" Grid.Column="7" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.HoursCompleted}" IsReadOnly="True" ></TextBox>
                 <Label Grid.Row="1" Grid.ColumnSpan="8">Talent 1, Talent 2, Talent 3, etc.</Label>
                 <Label Grid.Row="2" Grid.Column="0">Note</Label>
-                <TextBox Grid.Row="3" Grid.ColumnSpan="8" Height="200" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.Note}"></TextBox>
+                <TextBox Grid.Row="3" Grid.ColumnSpan="8" Height="200" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.Note}" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
             </Grid>   
         </StackPanel>
     </Grid>
