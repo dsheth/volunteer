@@ -9,11 +9,14 @@
             <local:FamiliesUserControl/>
         </TabItem>
         <TabItem x:Name="Work" Header="Work">work stuff</TabItem>
-            <TabItem x:Name="Tasks" Header="Tasks">
+        <TabItem x:Name="Tasks" Header="Tasks">
                 <local:TasksUserControl/>
-            </TabItem>
+        </TabItem>
         <TabItem x:Name="Talents" Header="Talents">Talents</TabItem>
-        <TabItem x:Name="People" Header="People">People</TabItem>
+            <TabItem x:Name="People" Header="People">
+                <local:PeopleUserControl/>
+            </TabItem>
+        
     </TabControl>
         <StackPanel Orientation="Horizontal">
             <Button Click="Save_Click" Margin="10">Save all changes</Button>

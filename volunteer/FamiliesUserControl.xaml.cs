@@ -56,6 +56,7 @@ namespace volunteer
             if ((bool)e.NewValue == true) { RefreshFromDb(); }
 
         }
+      
     }
 }
 
