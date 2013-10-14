@@ -18,10 +18,12 @@
                 <local:TasksUserControl/>
         </TabItem>
         <TabItem x:Name="Talents" Header="Talents">Talents</TabItem>
-            <TabItem x:Name="People" Header="People">
-                <local:PeopleUserControl/>
+        <TabItem x:Name="People" Header="People">
+            <local:PeopleUserControl/>
+        </TabItem>
+            <TabItem x:Name="NewPerson" Header="New Person">
+                <local:NewPersonUserControl/>
             </TabItem>
-        
     </TabControl>
         <StackPanel Orientation="Horizontal">
             <Button Click="Save_Click" Margin="10">Save all changes</Button>
