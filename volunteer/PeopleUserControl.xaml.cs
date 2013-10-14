@@ -44,5 +44,10 @@ namespace volunteer
         {
             if ((bool)e.NewValue == true) { RefreshFromDb(); }
         }
+
+        private void Click_NoAssociatedFamily(object sender, RoutedEventArgs e)
+        {
+            FamiliesComboBox.SelectedIndex = -1;
+        }
     }
 }

@@ -24,21 +24,20 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0">First Name</Label>
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ElementName=PeopleGrid, Path=SelectedValue.FirstName}"/>
                 <Label Grid.Row="0" Grid.Column="2">Last Name</Label>
                 <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding ElementName=PeopleGrid, Path=SelectedValue.LastName}"/>
-                <Label Grid.Row="0" Grid.Column="4">Email Name</Label>
-                <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding ElementName=PeopleGrid, Path=SelectedValue.Email}"/>
-                <Label Grid.Row="0" Grid.Column="6">Default Family</Label>
-                <ComboBox Grid.Row="0" Grid.Column="7"  x:Name="FamiliesComboBox" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=PeopleGrid, Path=SelectedValue.Family}"></ComboBox>
+                <Label Grid.Row="1" Grid.Column="0">Email Name</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=PeopleGrid, Path=SelectedValue.Email}"/>
+                <Label Grid.Row="1" Grid.Column="2">Default Family</Label>
+                <ComboBox Grid.Row="1" Grid.Column="3"  x:Name="FamiliesComboBox" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=PeopleGrid, Path=SelectedValue.Family}"></ComboBox>
+                <Button Grid.Row="1" Grid.Column="4" Click="Click_NoAssociatedFamily">No Associated Family</Button>
             </Grid>
         </StackPanel>   
     </Grid>
