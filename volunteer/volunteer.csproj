@@ -78,6 +78,9 @@
     <Compile Include="FamilyTalent.cs">
       <DependentUpon>VolunteerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NewWorkUserControl.xaml.cs">
+      <DependentUpon>NewWorkUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PeopleResult.cs" />
     <Compile Include="PeopleUserControl.xaml.cs">
       <DependentUpon>PeopleUserControl.xaml</DependentUpon>
@@ -134,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewWorkUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PeopleUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

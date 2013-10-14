@@ -5,11 +5,14 @@
         xmlns:local="clr-namespace:volunteer">
     <StackPanel>
     <TabControl TabStripPlacement="Left" SelectionChanged="TabControl_SelectionChanged" Name="Tabs">
-        <TabItem Header="Families">
-            <local:FamiliesUserControl/>
-        </TabItem>
+            <TabItem Header="New Work">
+                <local:NewWorkUserControl/>
+            </TabItem>
             <TabItem x:Name="Work" Header="Work">
                 <local:WorksUserControl/>
+            </TabItem>
+            <TabItem Header="Families">
+                <local:FamiliesUserControl/>
             </TabItem>
         <TabItem x:Name="Tasks" Header="Tasks">
                 <local:TasksUserControl/>
