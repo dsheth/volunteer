@@ -35,6 +35,9 @@ namespace volunteer
                 ToList();
             
             WorksStackPanel.DataContext = worksList;
+            PeopleComboBox.ItemsSource = db.Persons.ToList();
+            FamiliesComboBox.ItemsSource = db.Families.ToList();
+            TasksComboBox.ItemsSource = db.Tasks.ToList();
         }
 
         private void WorksTab_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

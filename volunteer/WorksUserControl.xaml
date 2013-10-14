@@ -8,9 +8,9 @@
     <UserControl.Resources>
         <DataTemplate x:Key="PeopleDropdownTemplate">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=SelectedValue.Person.FirstName}"/>
+                <TextBlock Text="{Binding Path=FirstName}"/>
                 <TextBlock Text=" "/>
-                <TextBlock Text="{Binding Path=SelectedValue.Person.LastName}" />
+                <TextBlock Text="{Binding Path=LastName}" />
             </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
@@ -40,7 +40,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0">Person</Label>
-                <ComboBox Grid.Row="0" Grid.Column="1"  x:Name="PeopleComboBox" ItemTemplate="{StaticResource PeopleDropdownTemplate}" SelectedItem="{Binding ElementName=WorksGrid, Path=SelectedValue.Family}"></ComboBox>
+                <ComboBox Grid.Row="0" Grid.Column="1"  x:Name="PeopleComboBox" ItemTemplate="{StaticResource PeopleDropdownTemplate}" SelectedItem="{Binding ElementName=WorksGrid, Path=SelectedValue.Person}"></ComboBox>
                 <Label Grid.Row="0" Grid.Column="2">Family</Label>
                 <ComboBox Grid.Row="0" Grid.Column="3"  x:Name="FamiliesComboBox" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=WorksGrid, Path=SelectedValue.Family}"></ComboBox>
                 <Label Grid.Row="0" Grid.Column="4">Task</Label>
