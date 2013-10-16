@@ -26,6 +26,7 @@ namespace volunteer
         public int HoursRequired { get; set; }
         public string MaritalStatus { get; set; }
         public string Note { get; set; }
+        public string AdminNote { get; set; }
     
         public virtual ObservableCollection<FamilyTalent> FamilyTalents { get; set; }
         public virtual ObservableCollection<Person> Persons { get; set; }

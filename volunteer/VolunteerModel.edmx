@@ -14,6 +14,7 @@
           <Property Name="HoursRequired" Type="int" Nullable="false" />
           <Property Name="MaritalStatus" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="AdminNote" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="FamilyTalent">
           <Key>
@@ -219,6 +220,7 @@
           <NavigationProperty Name="FamilyTalents" Relationship="Self.FK_FamilyTalent_To_Families" FromRole="Families" ToRole="FamilyTalent" />
           <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_To_Families" FromRole="Families" ToRole="Persons" />
           <NavigationProperty Name="Works" Relationship="volunteer_dbModel.FK_Works_To_Familes" FromRole="Family" ToRole="Work" />
+          <Property Name="AdminNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FamilyTalent">
           <Key>
@@ -430,6 +432,7 @@
           <EntitySetMapping Name="Families">
             <EntityTypeMapping TypeName="volunteer_dbModel.Family">
               <MappingFragment StoreEntitySet="Families">
+                <ScalarProperty Name="AdminNote" ColumnName="AdminNote" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="HoursRequired" ColumnName="HoursRequired" />
