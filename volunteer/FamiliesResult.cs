@@ -8,32 +8,20 @@ namespace volunteer
 {
     class FamiliesResult
     {
-        private int _hoursCompleted;
-        private Family _family;
 
-        public int HoursCompleted
-        {
-            get
-            {
-                return _hoursCompleted;
-            }
-            set
-            {
-                _hoursCompleted = value;
-            }
-        }
 
-        public Family Family
-        {
-            get
+        public Family Family { get; set; }
+        public int MinutesWorked { get; set; }
+
+     
+
+        public TimeSpan HoursWorked 
+        { get
             {
-                return _family;
+                return TimeSpan.FromMinutes(MinutesWorked);
             } 
-            set
-            {
-                _family = value;
-            }
         }
+
     }
 
 }

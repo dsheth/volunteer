@@ -29,8 +29,8 @@ namespace volunteer
         private void RefreshFromDb()
         {
             var db = MainWindow.dbInstance();
-   
-            var peopleList = db.Persons.Include(p => p.Family).ToList();
+
+            var peopleList = db.Persons.Include(p => p.Family).OrderBy(q => q.FirstName).ToList();
             PeopleGrid.DataContext = peopleList;
    
             var families = from f in db.Families select f;

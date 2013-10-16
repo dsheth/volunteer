@@ -41,7 +41,7 @@ namespace volunteer
         private void RefreshFromDb()
         {
             var db = MainWindow.dbInstance();
-            FamiliesComboBox.ItemsSource = db.Families.ToList();
+            FamiliesComboBox.ItemsSource = db.Families.OrderBy(f => f.Name).ToList();
         }
 
         private void Click_NoAssociatedFamily(object sender, RoutedEventArgs e)

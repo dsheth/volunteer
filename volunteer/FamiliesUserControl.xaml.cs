@@ -12,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System;
+using System.Data;
+using System.Collections.Generic;
+using System.Linq;
+
+
 
 namespace volunteer
 {
@@ -40,12 +46,23 @@ namespace volunteer
 
         private void RefreshFromDb()
         {
-            var familiesQuery = from familyDb in MainWindow.dbInstance().Families
+            var db = MainWindow.dbInstance();
+
+
+
+            var familiesQuery = from f in db.Families
+                                from w in db.Works
+                                .Where(z => z.FamilyId == f.Id).DefaultIfEmpty()
+
+                                group new { f, w } by new { f } into g
+                                orderby g.Key.f.Name
                                 select new FamiliesResult
                                 {
-                                    Family = familyDb,
-                                    HoursCompleted = 20
+                                    Family = g.Key.f,
+                                    MinutesWorked = g.Sum(y => (int?)y.w.MinutesWorked ?? 0)
+                                    // MinutesWorked = 40
                                 };
+
             var familiesList = familiesQuery.ToList();
             FamiliesStackPanel.DataContext = familiesList;
 

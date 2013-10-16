@@ -28,7 +28,7 @@ namespace volunteer
         private void RefreshFromDb()
         {
             var db = MainWindow.dbInstance();
-            var tasksList = db.Tasks.ToList();
+            var tasksList = db.Tasks.OrderBy(t => t.Name).ToList();
             var addedTasks = db.Tasks.Local.Where(task => db.Entry(task).State == System.Data.Entity.EntityState.Added).ToList();
             tasksList.AddRange(addedTasks);
             TasksStackPanel.DataContext = tasksList;

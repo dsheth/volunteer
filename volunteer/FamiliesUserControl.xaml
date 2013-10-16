@@ -12,7 +12,7 @@
                     <DataGridTextColumn Binding="{Binding Path=Family.Name}" Header="Family Name"/>
                     <DataGridTextColumn Binding="{Binding Path=Family.HoursRequired}" Header="Hours Required"/>
                     <DataGridTextColumn Binding="{Binding Path=Family.MaritalStatus}" Header="Marital Status"/>
-                    <DataGridTextColumn Binding="{Binding Path=HoursCompleted}" IsReadOnly="True" Header="Hours Completed"/>
+                    <DataGridTextColumn Binding="{Binding Path=HoursWorked}" IsReadOnly="True" Header="Hours Completed"/>
                     <DataGridTextColumn Binding="{Binding Path=Family.Note}" Header="Note" />
                 </DataGrid.Columns>
                 <DataGrid.RowStyle>

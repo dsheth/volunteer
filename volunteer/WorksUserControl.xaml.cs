@@ -31,7 +31,7 @@ namespace volunteer
             var db = MainWindow.dbInstance();
 
             var worksList = db.Works.Include(w => w.Person).
-                Include(w => w.Task).Include(w => w.Family).
+                Include(w => w.Task).Include(w => w.Family).OrderBy(w => w.DateOfWork).
                 ToList();
             
             WorksStackPanel.DataContext = worksList;
