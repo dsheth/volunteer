@@ -28,18 +28,22 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Person</Label>
         <ComboBox Grid.Row="0" Grid.Column="1"  x:Name="PeopleComboBox" ItemTemplate="{StaticResource PeopleDropdownTemplate}" SelectedItem="{Binding Path=Person}"></ComboBox>
         <Label Grid.Row="0" Grid.Column="2">Family</Label>
-        <ComboBox Grid.Row="0" Grid.Column="3"  x:Name="FamiliesComboBox" DisplayMemberPath="Name" SelectedItem="{Binding Path=Family}"></ComboBox>
+        <ComboBox Grid.Row="0" Grid.Column="3"  x:Name="FamiliesComboBox" DisplayMemberPath="Name" SelectedItem="{Binding Path=Family}" IsSynchronizedWithCurrentItem="True"></ComboBox>
         <Label Grid.Row="0" Grid.Column="4">Task</Label>
-        <ComboBox Grid.Row="0" Grid.Column="5"  x:Name="TasksComboBox" DisplayMemberPath="Name" SelectedItem="{Binding Path=Task}"></ComboBox>
+        <ComboBox Grid.Row="0" Grid.Column="5"  x:Name="TasksComboBox" DisplayMemberPath="Name" SelectedItem="{Binding Path=Task}" ></ComboBox>
         <Label Grid.Row="1" Grid.Column="0">Minutes Worked</Label>
         <TextBox Grid.Row="1" Grid.Column="1" x:Name="MinutesWorkedTextBox" Text="{Binding Path=MinutesWorked}"/>
         <Label Grid.Row="1" Grid.Column="2">Date of Work</Label>
         <DatePicker Grid.Row="1" Grid.Column="3" x:Name="DateOfWorkTextBox" Text="{Binding Path=DateOfWork}"/>
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Click="Click_AddWork">Add Work and Save all changes</Button>
-        <Button Grid.Row="2" Grid.Column="2" Click="Click_CancelWork">Cancel</Button>
+        <Label Grid.Row="2" Grid.Column="0">Note</Label>
+        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Height="300" Text="{Binding ElementName=FamiliesComboBox, Path=SelectedValue.Note}"></TextBox>
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="Click_AddWork">Add Work and Save all changes</Button>
+        <Button Grid.Row="4" Grid.Column="2" Click="Click_CancelWork">Cancel</Button>
     </Grid>
 </UserControl>
