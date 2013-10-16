@@ -45,7 +45,7 @@
                 <Label Grid.Row="0" Grid.Column="4">Marital Status</Label>
                 <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.MaritalStatus}"></TextBox>
                 <Label Grid.Row="0" Grid.Column="6">Hours Completed</Label>
-                <TextBox Grid.Row="0" Grid.Column="7" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.HoursCompleted}" IsReadOnly="True" ></TextBox>
+                <TextBox Grid.Row="0" Grid.Column="7" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.HoursWorked, Mode=OneWay}" IsReadOnly="True"  ></TextBox>
                 <Label Grid.Row="1" Grid.ColumnSpan="8">Talent 1, Talent 2, Talent 3, etc.</Label>
                 <Label Grid.Row="2" Grid.Column="0">Note</Label>
                 <TextBox Grid.Row="3" Grid.ColumnSpan="8" Height="200" Text="{Binding ElementName=FamiliesGrid, Path=SelectedValue.Family.Note}" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
